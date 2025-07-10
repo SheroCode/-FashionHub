@@ -1,0 +1,5 @@
+.active {
+  border-bottom: 2px var(--main-color) solid;
+  color: var(--main-color) !important;
+  font-weight: 500;
+}

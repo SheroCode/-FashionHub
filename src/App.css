@@ -1,0 +1,15 @@
+
+:root {
+  --main-color: #3a4980;
+  --light-color: #F4E8F3;
+  
+}
+body{
+  padding-top: 5rem;
+color:var(--main-color)
+
+}
+.btn-primary{
+  background-color: var(--main-color) !important;
+  border-color: var(--main-color) !important;
+}
