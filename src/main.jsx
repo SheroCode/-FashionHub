@@ -6,11 +6,14 @@ import "./components/Banner/Banner.css";
 import "./components/ProductCard/ProductCard.css";
 import { CartContextProvider } from "./Contexts/CartContext/CartContextProvider.jsx";
 import "./index.css";
+import { AuthProvider } from "./Contexts/AuthContext/AuthContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <CartContextProvider>
+    <AuthProvider>
+      <CartContextProvider>
         <App />
-    </CartContextProvider>
+      </CartContextProvider>
+    </AuthProvider>
   </StrictMode>
 );

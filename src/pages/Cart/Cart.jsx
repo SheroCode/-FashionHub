@@ -2,10 +2,13 @@ import { useContext } from "react";
 import { CartStore } from "../../Contexts/CartContext/CartContext";
 import CartCard from "../../components/CartCard/CartCard";
 import { Link } from "react-router-dom";
-
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../../Contexts/AuthContext/AuthContext";
 function Cart() {
   const { cart } = useContext(CartStore);
+  const { user } = useAuth();
 
+  if (!user) return <Navigate to="/login" />;
   return (
     <>
       {cart.length == 0 ? (
