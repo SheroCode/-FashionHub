@@ -1,18 +1,15 @@
 import {
-  BrowserRouter,
   createBrowserRouter,
-  Route,
-  RouterProvider,
-  Routes,
+  RouterProvider
 } from "react-router-dom";
 import "./App.css";
-import Footer from "./components/Footer/Footer";
-import Navbar from "./components/Navbar/Navbar";
+import Cart from "./pages/Cart/Cart";
 import Home from "./pages/Home/Home";
-import Login from "./pages/Login/Login";
-import Register from "./pages/Register/Register";
-import NotFound from "./pages/NotFound/NotFound";
 import Layout from "./pages/Layout/Layout";
+import Login from "./pages/Login/Login";
+import NotFound from "./pages/NotFound/NotFound";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import Register from "./pages/Register/Register";
 function App() {
   const routes = createBrowserRouter([
     {
@@ -24,12 +21,20 @@ function App() {
           element: <Home />,
         },
         {
+          path: "cart",
+          element: <Cart />,
+        },
+        {
           path: "login",
           element: <Login />,
         },
         {
           path: "register",
           element: <Register />,
+        },
+        {
+          path: "product/:id",
+          element: <ProductDetails />,
         },
 
         {
@@ -42,6 +47,7 @@ function App() {
 
   return (
     <>
+    
       <RouterProvider router={routes}></RouterProvider>
     </>
   );

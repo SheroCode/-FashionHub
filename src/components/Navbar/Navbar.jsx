@@ -1,6 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
-import "./Navbar.css"
+import "./Navbar.css";
+import { GiShoppingCart } from "react-icons/gi";
+import { useContext } from "react";
+import {
+  CartStore,
+} from "../../Contexts/CartContext/CartContext";
 function Navbar() {
+  const { cart } = useContext(CartStore);
   return (
     <>
       <nav className='navbar navbar-expand-lg bg-white fixed-top border-bottom border-2'>
@@ -23,11 +29,22 @@ function Navbar() {
               <NavLink to={""} className='nav-link ' aria-current='page'>
                 Home
               </NavLink>
-              <NavLink to={"login"} className='nav-link'>
+
+              <NavLink to={"login"} className='nav-link '>
                 Login
               </NavLink>
-              <NavLink to={"register"} className='nav-link'>
+              <NavLink to={"register"} className='nav-link '>
                 Register
+              </NavLink>
+              {/* CART */}
+              <NavLink
+                to={"cart"}
+                className='nav-link d-flex gap-1  align-items-center'
+                aria-current='page'>
+                <GiShoppingCart className='fs-4' />
+                {cart.length > 0 && (
+                  <div className='cart-counter'> {cart.length} </div>
+                )}
               </NavLink>
             </div>
           </div>

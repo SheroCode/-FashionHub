@@ -1,14 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
 import "bootstrap/dist/css/bootstrap.css";
-import "./components/ProductCard/ProductCard.css"
-import "./components/Banner/Banner.css"
-import "./pages/Home/Home.css"
-import App from './App.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.jsx";
+import "./components/Banner/Banner.css";
+import "./components/ProductCard/ProductCard.css";
+import { CartContextProvider } from "./Contexts/CartContext/CartContextProvider.jsx";
+import "./index.css";
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <CartContextProvider>
+        <App />
+    </CartContextProvider>
+  </StrictMode>
+);

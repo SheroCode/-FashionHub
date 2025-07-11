@@ -1,6 +1,7 @@
-import React from "react";
-import ProductList from "../../components/ProductList/ProductList";
 import Banner from "../../components/Banner/Banner";
+import ProductList from "../../components/ProductList/ProductList";
+import "./Home.css";
+
 function Home() {
   return (
     <>

@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { axiosInterceptors } from "../../Neworks/interceptors";
 import ProductCard from "../ProductCard/ProductCard";
-import axios from "axios";
 function ProductList() {
   const [products, setProduct] = useState([]);
+
+  const [searchTerm, setSearchTerm] = useState("");
   function handleShortList(productName) {
     alert(productName);
   }
   useEffect(() => {
-    axios.get(`https://dummyjson.com/products`).then((res) => {
+    axiosInterceptors.get(`/products`).then((res) => {
       console.log(res.data.products);
       return setProduct(res.data.products);
     });
   }, []);
+  const filteredProducts = products?.filter((product) =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <>
       <div className='container'>
@@ -21,21 +27,20 @@ function ProductList() {
           <input
             className='form-control mr-sm-2'
             type='search'
-            placeholder='Search'
+            placeholder='Search for the products .....'
             aria-label='Search'
+            onChange={(e)=>setSearchTerm(e.target.value)}
           />
-          <button
-            className='btn btn-outline-success my-2 my-sm-0'
-            type='submit'>
-            Search
-          </button>
+         
         </div>
+
         <div className='row '>
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <ProductCard
               product={product}
               key={product.id}
               handleShortList={handleShortList}
+              
             />
           ))}
         </div>

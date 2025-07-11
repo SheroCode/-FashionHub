@@ -3,3 +3,14 @@
   color: var(--main-color) !important;
   font-weight: 500;
 }
+.cart-counter {
+  width: 20px;
+  height: 20px;
+  background-color: var(--main-color);
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
