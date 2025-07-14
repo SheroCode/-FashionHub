@@ -2,6 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { GiShoppingCart } from "react-icons/gi";
 import { useContext } from "react";
+import { FaHeart } from "react-icons/fa";
+
 import {
   CartStore,
 } from "../../Contexts/CartContext/CartContext";
@@ -42,6 +44,16 @@ function Navbar() {
                 className='nav-link d-flex gap-1  align-items-center'
                 aria-current='page'>
                 <GiShoppingCart className='fs-4' />
+                {cart.length > 0 && (
+                  <div className='cart-counter'> {cart.length} </div>
+                )}
+              </NavLink>
+              {/* WISHLIST */}
+              <NavLink
+                to={"wishlist"}
+                className='nav-link d-flex gap-1  align-items-center'
+                aria-current='page'>
+                <FaHeart className='fs-5' />
                 {cart.length > 0 && (
                   <div className='cart-counter'> {cart.length} </div>
                 )}

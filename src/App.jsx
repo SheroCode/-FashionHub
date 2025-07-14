@@ -10,6 +10,7 @@ import Login from "./pages/Login/Login";
 import NotFound from "./pages/NotFound/NotFound";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Register from "./pages/Register/Register";
+import WishList from "./pages/WishList/WishList";
 function App() {
   const routes = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ function App() {
         {
           path: "cart",
           element: <Cart />,
+        },
+        {
+          path: "wishlist",
+          element: <WishList />,
         },
         {
           path: "login",

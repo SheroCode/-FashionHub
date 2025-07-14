@@ -10,7 +10,6 @@ function Login() {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    // هنا بنسجل المستخدم مؤقتًا
     setUser({ email: data.email });
     navigate("/cart");
   };
