@@ -1,14 +1,21 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-import Cart from "./pages/Cart/Cart";
 import Home from "./pages/Home/Home";
 import Layout from "./pages/Layout/Layout";
 import Login from "./pages/Login/Login";
 import NotFound from "./pages/NotFound/NotFound";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Register from "./pages/Register/Register";
-import WishList from "./pages/WishList/WishList";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import { lazy, Suspense } from "react";
+
+const Cart = lazy(() => {
+  import("./pages/Cart/Cart");
+});
+const WishList = lazy(() => {
+  import("./pages/WishList/WishList");
+});
+
 function App() {
   const routes = createBrowserRouter([
     {
@@ -23,7 +30,10 @@ function App() {
           path: "cart",
           element: (
             <ProtectedRoute>
-              <Cart />
+              <Suspense>
+                {" "}
+                <Cart />
+              </Suspense>
             </ProtectedRoute>
           ),
         },
@@ -31,7 +41,10 @@ function App() {
           path: "wishlist",
           element: (
             <ProtectedRoute>
-              <WishList />
+              <Suspense>
+                {" "}
+                <WishList />
+              </Suspense>
             </ProtectedRoute>
           ),
         },
