@@ -6,7 +6,7 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 function ProductDetails() {
   const [productDetails, setProductDetails] = useState({});
 
-  const {id} = useParams();
+  const { id } = useParams();
 
   axiosInterceptors
     .get(`/product/${id}`)
@@ -14,6 +14,7 @@ function ProductDetails() {
 
   return (
     <>
+      <h2 className='text-center mb-3'> Product Details</h2>
       <ProductCard product={productDetails} />
     </>
   );

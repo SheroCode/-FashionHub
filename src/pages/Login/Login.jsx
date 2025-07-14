@@ -2,7 +2,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Contexts/AuthContext/AuthContext";
+import { useAuth } from "../../Contexts/AuthContext/AuthContextProvider";
 
 function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm();

@@ -1,7 +1,4 @@
-import {
-  createBrowserRouter,
-  RouterProvider
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Cart from "./pages/Cart/Cart";
 import Home from "./pages/Home/Home";
@@ -11,6 +8,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Register from "./pages/Register/Register";
 import WishList from "./pages/WishList/WishList";
+import ProtectedRoute from "./routes/ProtectedRoute";
 function App() {
   const routes = createBrowserRouter([
     {
@@ -23,11 +21,19 @@ function App() {
         },
         {
           path: "cart",
-          element: <Cart />,
+          element: (
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "wishlist",
-          element: <WishList />,
+          element: (
+            <ProtectedRoute>
+              <WishList />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "login",
@@ -52,7 +58,6 @@ function App() {
 
   return (
     <>
-    
       <RouterProvider router={routes}></RouterProvider>
     </>
   );
