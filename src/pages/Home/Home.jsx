@@ -1,12 +1,27 @@
+import { lazy, Suspense } from "react";
 import Banner from "../../components/Banner/Banner";
-import ProductList from "../../components/ProductList/ProductList";
 import "./Home.css";
-
+import { CgEnter } from "react-icons/cg";
+import { TbTruckLoading } from "react-icons/tb";
+const ProductList = lazy(() =>
+  import("../../components/ProductList/ProductList")
+);
 function Home() {
   return (
     <>
       <Banner />
-      <ProductList />
+
+      <Suspense
+        fallback={
+          <h3 className='text-center'>
+            {" "}
+            <TbTruckLoading />
+            Loading...
+          </h3>
+        }>
+        {" "}
+        <ProductList />
+      </Suspense>
     </>
   );
 }

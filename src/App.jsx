@@ -1,14 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/Home/Home";
 import Layout from "./pages/Layout/Layout";
 import Login from "./pages/Login/Login";
+import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Register from "./pages/Register/Register";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { lazy, Suspense } from "react";
-
 const Cart = lazy(() => {
   import("./pages/Cart/Cart");
 });
@@ -24,6 +23,7 @@ function App() {
       children: [
         {
           index: true,
+
           element: <Home />,
         },
         {
