@@ -1,19 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Layout from "./pages/Layout/Layout";
-import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
-import Register from "./pages/Register/Register";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { lazy, Suspense } from "react";
-const Cart = lazy(() => {
-  import("./pages/Cart/Cart");
-});
-const WishList = lazy(() => {
-  import("./pages/WishList/WishList");
-});
+import { TbTruckLoading } from "react-icons/tb";
+
+const Cart = lazy(() => import("./pages/Cart/Cart"));
+const WishList = lazy(() => import("./pages/WishList/WishList"));
+const Register = lazy(() => import("./pages/Register/Register"));
+const Login = lazy(() => import("./pages/Login/Login"));
 
 function App() {
   const routes = createBrowserRouter([
@@ -23,15 +21,20 @@ function App() {
       children: [
         {
           index: true,
-
           element: <Home />,
         },
         {
           path: "cart",
           element: (
             <ProtectedRoute>
-              <Suspense>
-                {" "}
+              <Suspense
+                fallback={
+                  <h3 className='text-center'>
+                    {" "}
+                    <TbTruckLoading />
+                    Loading Cart...
+                  </h3>
+                }>
                 <Cart />
               </Suspense>
             </ProtectedRoute>
@@ -40,27 +43,52 @@ function App() {
         {
           path: "wishlist",
           element: (
-            <ProtectedRoute>
-              <Suspense>
-                {" "}
-                <WishList />
-              </Suspense>
-            </ProtectedRoute>
+            <Suspense
+              fallback={
+                <h3 className='text-center'>
+                  {" "}
+                  <TbTruckLoading />
+                  Loading Wishlist...
+                </h3>
+              }>
+              <WishList />
+            </Suspense>
           ),
         },
         {
           path: "login",
-          element: <Login />,
+          element: (
+            <Suspense
+              fallback={
+                <h3 className='text-center'>
+                  {" "}
+                  <TbTruckLoading />
+                  Loading Login...
+                </h3>
+              }>
+              <Login />
+            </Suspense>
+          ),
         },
         {
           path: "register",
-          element: <Register />,
+          element: (
+            <Suspense
+              fallback={
+                <h3 className='text-center'>
+                  {" "}
+                  <TbTruckLoading />
+                  Loading Register...
+                </h3>
+              }>
+              <Register />
+            </Suspense>
+          ),
         },
         {
           path: "product/:id",
           element: <ProductDetails />,
         },
-
         {
           path: "*",
           element: <NotFound />,
@@ -69,11 +97,7 @@ function App() {
     },
   ]);
 
-  return (
-    <>
-      <RouterProvider router={routes}></RouterProvider>
-    </>
-  );
+  return <RouterProvider router={routes} />;
 }
 
 export default App;
